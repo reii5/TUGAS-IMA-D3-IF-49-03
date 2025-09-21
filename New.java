@@ -20,9 +20,18 @@ public class New {
         Scanner input = new Scanner(System.in);
         System.out.print("Enter your name: ");
         String name = input.nextLine();
+
+
         System.out.print("Enter your age: ");
-        int age = input.nextInt();
-        System.out.println("My name is " + name + " and I am " + age + " years old.");
+        String ageInput = input.nextLine();
+
+        if (ageInput.matches("\\d+")) {
+            int age = Integer.parseInt(ageInput);
+            System.out.println("My name is " + name + " and I am " + age + " years old.");
+        }else{
+            System.out.println("My name is " + name + " and I am " + ageInput + " years old.");
+        }
+       
 
     int choice;
     do {
@@ -35,16 +44,22 @@ public class New {
         System.out.println("4. bagi");
         System.out.println("5. exit");
         System.out.print("masukkan pilihan (1-5): ");
-        choice = input.nextInt();
+        String pilihan = input.nextLine();
 
-        if (choice == 5) {
-            break;
-        }
+        if (pilihan.matches("\\d+")){
+            choice = Integer.parseInt(pilihan);
+            if (choice == 5) {
+                break;
+            }
 
-        if (choice < 1 || choice > 5) {
-            System.out.println("pilihan tidak valid");
-            continue;
-        }
+            if (choice < 1 || choice > 5) {
+                System.out.println("pilihan tidak valid");
+                continue;
+            }
+            } else {
+                System.out.println("input harus berupa angka!");
+                continue;
+            }
 
         System.out.print("Enter first number: ");
         int num1 = input.nextInt();
@@ -77,6 +92,7 @@ public class New {
             }
     } while (true);
     System.out.println("terima kasih telah menggunakan program ini");
+    input.close();
     }        
     
     
